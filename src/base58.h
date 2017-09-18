@@ -1,6 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin Developers
 // Copyright (c) 2011-2012 The PPCoin developers
+// Copyleft 2017 The STK developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -277,8 +278,8 @@ class CBitcoinAddress : public CBase58Data
 public:
     enum
     {
-        PUBKEY_ADDRESS = 55,  // ppcoin: addresses begin with 'P'
-        SCRIPT_ADDRESS = 117, // ppcoin: addresses begin with 'p'
+        PUBKEY_ADDRESS = 55,  // starktoken: addresses begin with 'P'
+        SCRIPT_ADDRESS = 117, // starktoken: addresses begin with 'p'
         PUBKEY_ADDRESS_TEST = 111,
         SCRIPT_ADDRESS_TEST = 196,
     };

@@ -1,3 +1,4 @@
+Copyleft 2017 StarkToken (STK) Developers
 Copyright (c) 2012-2013 PPCoin Developers
 Copyright (c) 2009-2012 Bitcoin Developers
 Distributed under the MIT/X11 software license, see the accompanying file
@@ -12,13 +13,13 @@ Mac OS X bitcoind build instructions
 Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
-Modified for PPCoin by Jeff Larkin <jefflarkin@gmail.com>
+Modified for StarkToken by Kumar Anirudha <anirudhastark@yahoo.com>
 
 
-See readme-qt.rst for instructions on building PPCoin QT, the
+See readme-qt.rst for instructions on building StarkToken QT, the
 graphical user interface.
 
-Tested on 10.5 and 10.6 intel.  PPC is not supported because it's big-endian.
+Tested on 10.5 and 10.6 intel.  STK is not supported because it's big-endian.
 
 All of the commands should be executed in Terminal.app.. it's in
 /Applications/Utilities
@@ -30,7 +31,7 @@ but you can get the current version from http://developer.apple.com
 
 1.  Clone the github tree to get the source code:
 
-git clone git@github.com:ppcoin/ppcoin.git ppcoin
+git clone git@github.com:starktoken/starktoken.git starktoken
 
 2.  Download and install MacPorts from http://www.macports.org/
 
@@ -52,8 +53,8 @@ make -f makefile.osx
 make -f makefile.osx RELEASE=true 64BIT=true
 
 Run:
-  ./ppcoind --help  # for a list of command-line options.
+  ./starktokend --help  # for a list of command-line options.
 Run
-  ./ppcoind -daemon # to start the bitcoin daemon.
+  ./starktokend -daemon # to start the bitcoin daemon.
 Run
-  ./ppcoind help # When the daemon is running, to get a list of RPC commands
+  ./starktokend help # When the daemon is running, to get a list of RPC commands

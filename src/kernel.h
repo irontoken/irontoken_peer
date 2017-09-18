@@ -1,8 +1,9 @@
 // Copyright (c) 2012-2015 The Peercoin developers
+// Copyleft 2017 The StarkToken developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef PPCOIN_KERNEL_H
-#define PPCOIN_KERNEL_H
+#ifndef STK_KERNEL_H
+#define STK_KERNEL_H
 
 #include "main.h"
 
@@ -49,4 +50,4 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex);
 // Check stake modifier hard checkpoints
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum);
 
-#endif // PPCOIN_KERNEL_H
+#endif // STK_KERNEL_H

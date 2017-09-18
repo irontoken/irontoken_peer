@@ -1,29 +1,14 @@
-Peercoin (PPCoin) 0.5.4 BETA
-
-Copyright (c) 2011-2016 Peercoin (PPCoin) Developers
-Distributed under the MIT/X11 software license, see the accompanying
-file license.txt or http://www.opensource.org/licenses/mit-license.php.
-This product includes software developed by the OpenSSL Project for use in
-the OpenSSL Toolkit (http://www.openssl.org/).  This product includes
-cryptographic software written by Eric Young (eay@cryptsoft.com).
-
-
-Intro
------
-Peercoin (PPCoin) is a free open source project derived from Bitcoin, with
-the goal of providing a long-term energy-efficient crypto-currency.
-Built on the foundation of Bitcoin, innovations such as proof-of-stake
-help further advance the field of crypto-currency.
+StarkToken (STK) 0.0.1
 
 
 Setup
 -----
-After completing windows setup then run ppcoin-qt.
-Alternatively you can run windows command line (cmd) in ppcoin program dir.
+After completing windows setup then run starktoken-qt.
+Alternatively you can run windows command line (cmd) in starktoken program dir.
   cd daemon
-  ppcoind
-You would need to create a configuration file ppcoin.conf in the default
-wallet directory. Grant access to ppcoind/ppcoin-qt in anti-virus and firewall
+  starktokend
+You would need to create a configuration file starktoken.conf in the default
+wallet directory. Grant access to starktokend/starktoken-qt in anti-virus and firewall
 applications if necessary.
 
 The software automatically finds other nodes to connect to.  You can
@@ -37,16 +22,16 @@ Upgrade
 -------
 All your existing coins/transactions should be intact with the upgrade.
 To upgrade from 0.4, first backup wallet in qt menu or by command line
-ppcoind backupwallet <destination_backup_file>
-Then shutdown ppcoind by
-ppcoind stop
+starktokend backupwallet <destination_backup_file>
+Then shutdown starktokend by
+starktokend stop
 Uninstall v0.4 client, download and install v0.5 client.
 If upgrade is performed after or close to upgrade deadline, blockchain
 re-download is required.
 
 
 See the documentation/wiki at github:
-  http://github.com/ppcoin/ppcoin
+  http://github.com/starktoken/starktoken
 for help and more information.
 
 

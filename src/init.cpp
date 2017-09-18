@@ -1,6 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2011-2013 The PPCoin developers
+// Copyright (c) 2011-2013 The STK developers
+// Copyleft 2017 The STK developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "db.h"
@@ -75,7 +76,7 @@ void Shutdown(void* parg)
         delete pwalletMain;
         CreateThread(ExitTimeout, NULL);
         Sleep(50);
-        printf("PPCoin exiting\n\n");
+        printf("STK exiting\n\n");
         fExit = true;
 #ifndef QT_GUI
         // ensure non UI client get's exited here, but let Bitcoin-Qt reach return 0; in bitcoin.cpp
@@ -177,15 +178,15 @@ bool AppInit2(int argc, char* argv[])
     if (mapArgs.count("-?") || mapArgs.count("--help"))
     {
         string strUsage = string() +
-          _("PPCoin version") + " " + FormatFullVersion() + "\n\n" +
+          _("STK version") + " " + FormatFullVersion() + "\n\n" +
           _("Usage:") + "\t\t\t\t\t\t\t\t\t\t\n" +
-            "  ppcoind [options]                   \t  " + "\n" +
-            "  ppcoind [options] <command> [params]\t  " + _("Send command to -server or ppcoind") + "\n" +
-            "  ppcoind [options] help              \t\t  " + _("List commands") + "\n" +
-            "  ppcoind [options] help <command>    \t\t  " + _("Get help for a command") + "\n" +
+            "  starktokend [options]                   \t  " + "\n" +
+            "  starktokend [options] <command> [params]\t  " + _("Send command to -server or starktokend") + "\n" +
+            "  starktokend [options] help              \t\t  " + _("List commands") + "\n" +
+            "  starktokend [options] help <command>    \t\t  " + _("Get help for a command") + "\n" +
           _("Options:") + "\n" +
-            "  -conf=<file>     \t\t  " + _("Specify configuration file (default: ppcoin.conf)") + "\n" +
-            "  -pid=<file>      \t\t  " + _("Specify pid file (default: ppcoind.pid)") + "\n" +
+            "  -conf=<file>     \t\t  " + _("Specify configuration file (default: starktoken.conf)") + "\n" +
+            "  -pid=<file>      \t\t  " + _("Specify pid file (default: starktokend.pid)") + "\n" +
             "  -gen             \t\t  " + _("Generate coins") + "\n" +
             "  -gen=0           \t\t  " + _("Don't generate coins") + "\n" +
             "  -min             \t\t  " + _("Start minimized") + "\n" +
@@ -295,7 +296,7 @@ bool AppInit2(int argc, char* argv[])
 
 #ifndef QT_GUI
     for (int i = 1; i < argc; i++)
-        if (!IsSwitchChar(argv[i][0]) && !(strlen(argv[i]) >= 7 && strncasecmp(argv[i], "ppcoin:", 7) == 0))
+        if (!IsSwitchChar(argv[i][0]) && !(strlen(argv[i]) >= 7 && strncasecmp(argv[i], "starktoken:", 7) == 0))
             fCommandLine = true;
 
     if (fCommandLine)
@@ -330,7 +331,7 @@ bool AppInit2(int argc, char* argv[])
     if (!fDebug)
         ShrinkDebugFile();
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("PPCoin version %s (%s)\n", FormatFullVersion().c_str(), CLIENT_DATE.c_str());
+    printf("STK version %s (%s)\n", FormatFullVersion().c_str(), CLIENT_DATE.c_str());
     printf("Default data directory %s\n", GetDefaultDataDir().string().c_str());
 
     if (GetBoolArg("-loadblockindextest"))
@@ -348,7 +349,7 @@ bool AppInit2(int argc, char* argv[])
     static boost::interprocess::file_lock lock(pathLockFile.string().c_str());
     if (!lock.try_lock())
     {
-        ThreadSafeMessageBox(strprintf(_("Cannot obtain a lock on data directory %s.  PPCoin is probably already running."), GetDataDir().string().c_str()), _("PPCoin"), wxOK|wxMODAL);
+        ThreadSafeMessageBox(strprintf(_("Cannot obtain a lock on data directory %s.  STK is probably already running."), GetDataDir().string().c_str()), _("STK"), wxOK|wxMODAL);
         return false;
     }
 
@@ -357,7 +358,7 @@ bool AppInit2(int argc, char* argv[])
     // Load data files
     //
     if (fDaemon)
-        fprintf(stdout, "ppcoin server starting\n");
+        fprintf(stdout, "starktoken server starting\n");
     int64 nStart;
 
     InitMessage(_("Loading addresses..."));
@@ -394,12 +395,12 @@ bool AppInit2(int argc, char* argv[])
         if (nLoadWalletRet == DB_CORRUPT)
             strErrors << _("Error loading wallet.dat: Wallet corrupted") << "\n";
         else if (nLoadWalletRet == DB_TOO_NEW)
-            strErrors << _("Error loading wallet.dat: Wallet requires newer version of PPCoin") << "\n";
+            strErrors << _("Error loading wallet.dat: Wallet requires newer version of STK") << "\n";
         else if (nLoadWalletRet == DB_NEED_REWRITE)
         {
-            strErrors << _("Wallet needed to be rewritten: restart PPCoin to complete") << "\n";
+            strErrors << _("Wallet needed to be rewritten: restart STK to complete") << "\n";
             printf("%s", strErrors.str().c_str());
-            ThreadSafeMessageBox(strErrors.str(), _("PPCoin"), wxOK | wxICON_ERROR | wxMODAL);
+            ThreadSafeMessageBox(strErrors.str(), _("STK"), wxOK | wxICON_ERROR | wxMODAL);
             return false;
         }
         else
@@ -471,7 +472,7 @@ bool AppInit2(int argc, char* argv[])
 
     if (!strErrors.str().empty())
     {
-        ThreadSafeMessageBox(strErrors.str(), _("PPCoin"), wxOK | wxICON_ERROR | wxMODAL);
+        ThreadSafeMessageBox(strErrors.str(), _("STK"), wxOK | wxICON_ERROR | wxMODAL);
         return false;
     }
 
@@ -527,7 +528,7 @@ bool AppInit2(int argc, char* argv[])
         addrProxy = CService(mapArgs["-proxy"], 9050);
         if (!addrProxy.IsValid())
         {
-            ThreadSafeMessageBox(_("Invalid -proxy address"), _("PPCcoin"), wxOK | wxMODAL);
+            ThreadSafeMessageBox(_("Invalid -proxy address"), _("STK"), wxOK | wxMODAL);
             return false;
         }
     }
@@ -558,7 +559,7 @@ bool AppInit2(int argc, char* argv[])
         std::string strError;
         if (!BindListenPort(strError))
         {
-            ThreadSafeMessageBox(strError, _("PPCoin"), wxOK | wxMODAL);
+            ThreadSafeMessageBox(strError, _("STK"), wxOK | wxMODAL);
             return false;
         }
     }
@@ -578,27 +579,27 @@ bool AppInit2(int argc, char* argv[])
     {
         if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee) || nTransactionFee < MIN_TX_FEE)
         {
-            ThreadSafeMessageBox(_("Invalid amount for -paytxfee=<amount>"), _("PPCoin"), wxOK | wxMODAL);
+            ThreadSafeMessageBox(_("Invalid amount for -paytxfee=<amount>"), _("STK"), wxOK | wxMODAL);
             return false;
         }
         if (nTransactionFee > 0.25 * COIN)
-            ThreadSafeMessageBox(_("Warning: -paytxfee is set very high.  This is the transaction fee you will pay if you send a transaction."), _("PPCoin"), wxOK | wxICON_EXCLAMATION | wxMODAL);
+            ThreadSafeMessageBox(_("Warning: -paytxfee is set very high.  This is the transaction fee you will pay if you send a transaction."), _("STK"), wxOK | wxICON_EXCLAMATION | wxMODAL);
     }
 
-    if (mapArgs.count("-reservebalance")) // ppcoin: reserve balance amount
+    if (mapArgs.count("-reservebalance")) // starktoken: reserve balance amount
     {
         int64 nReserveBalance = 0;
         if (!ParseMoney(mapArgs["-reservebalance"], nReserveBalance))
         {
-            ThreadSafeMessageBox(_("Invalid amount for -reservebalance=<amount>"), _("PPCoin"), wxOK | wxMODAL);
+            ThreadSafeMessageBox(_("Invalid amount for -reservebalance=<amount>"), _("STK"), wxOK | wxMODAL);
             return false;
         }
     }
 
-    if (mapArgs.count("-checkpointkey")) // ppcoin: checkpoint master priv key
+    if (mapArgs.count("-checkpointkey")) // starktoken: checkpoint master priv key
     {
         if (!Checkpoints::SetCheckpointPrivKey(GetArg("-checkpointkey", "")))
-            ThreadSafeMessageBox(_("Unable to sign checkpoint, wrong checkpointkey?\n"), _("PPCoin"), wxOK | wxMODAL);
+            ThreadSafeMessageBox(_("Unable to sign checkpoint, wrong checkpointkey?\n"), _("STK"), wxOK | wxMODAL);
     }
 
     //
@@ -610,7 +611,7 @@ bool AppInit2(int argc, char* argv[])
     RandAddSeedPerfmon();
 
     if (!CreateThread(StartNode, NULL))
-        ThreadSafeMessageBox(_("Error: CreateThread(StartNode) failed"), _("PPCoin"), wxOK | wxMODAL);
+        ThreadSafeMessageBox(_("Error: CreateThread(StartNode) failed"), _("STK"), wxOK | wxMODAL);
 
     if (fServer)
         CreateThread(ThreadRPCServer, NULL);

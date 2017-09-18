@@ -1,5 +1,6 @@
 // Copyright (c) 2012 The Bitcoin developers
 // Copyright (c) 2012-2013 The PPCoin developers
+// Copyleft 2017 The STK developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef BITCOIN_VERSION_H
@@ -27,17 +28,17 @@ extern const std::string CLIENT_NAME;
 extern const std::string CLIENT_BUILD;
 extern const std::string CLIENT_DATE;
 
-// ppcoin version - intended for display purpose ONLY
-#define PPCOIN_VERSION_MAJOR       0
-#define PPCOIN_VERSION_MINOR       5
-#define PPCOIN_VERSION_REVISION    4
-#define PPCOIN_VERSION_BUILD       0
+// starktoken version - intended for display purpose ONLY
+#define STK_VERSION_MAJOR       0
+#define STK_VERSION_MINOR       5
+#define STK_VERSION_REVISION    4
+#define STK_VERSION_BUILD       0
 
-static const int PPCOIN_VERSION =
-                           1000000 * PPCOIN_VERSION_MAJOR
-                         +   10000 * PPCOIN_VERSION_MINOR
-                         +     100 * PPCOIN_VERSION_REVISION
-                         +       1 * PPCOIN_VERSION_BUILD;
+static const int STK_VERSION =
+                           1000000 * STK_VERSION_MAJOR
+                         +   10000 * STK_VERSION_MINOR
+                         +     100 * STK_VERSION_REVISION
+                         +       1 * STK_VERSION_BUILD;
 
 //
 // network protocol versioning

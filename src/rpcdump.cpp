@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2012 Bitcoin Developers
 // Copyright (c) 2012-2013 The PPCoin developers
+// Copyleft 2017 The STK developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -44,7 +45,7 @@ Value importprivkey(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "importprivkey <ppcoinprivkey> [label]\n"
+            "importprivkey <starktokenprivkey> [label]\n"
             "Adds a private key (as returned by dumpprivkey) to your wallet.");
 
     string strSecret = params[0].get_str();
@@ -57,7 +58,7 @@ Value importprivkey(const Array& params, bool fHelp)
     if (!fGood) throw JSONRPCError(-5,"Invalid private key");
     if (pwalletMain->IsLocked())
         throw JSONRPCError(-13, "Error: Please enter the wallet passphrase with walletpassphrase first.");
-    if (fWalletUnlockMintOnly) // ppcoin: no importprivkey in mint-only mode
+    if (fWalletUnlockMintOnly) // starktoken: no importprivkey in mint-only mode
         throw JSONRPCError(-102, "Wallet is unlocked for minting only.");
 
     CKey key;
@@ -87,8 +88,8 @@ Value dumpprivkey(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "dumpprivkey <ppcoinaddress>\n"
-            "Reveals the private key corresponding to <ppcoinaddress>.");
+            "dumpprivkey <starktokenaddress>\n"
+            "Reveals the private key corresponding to <starktokenaddress>.");
 
     string strAddress = params[0].get_str();
     CBitcoinAddress address;
@@ -96,7 +97,7 @@ Value dumpprivkey(const Array& params, bool fHelp)
         throw JSONRPCError(-5, "Invalid Peercoin address");
     if (pwalletMain->IsLocked())
         throw JSONRPCError(-13, "Error: Please enter the wallet passphrase with walletpassphrase first.");
-    if (fWalletUnlockMintOnly) // ppcoin: no dumpprivkey in mint-only mode
+    if (fWalletUnlockMintOnly) // starktoken: no dumpprivkey in mint-only mode
         throw JSONRPCError(-102, "Wallet is unlocked for minting only.");
     CKeyID keyID;
     if (!address.GetKeyID(keyID))
